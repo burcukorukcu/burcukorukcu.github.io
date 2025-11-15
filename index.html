@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<!-- The `dark` class will be added to this tag by JS -->
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burcu Körükcü | Senior Data Engineer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Updated Tailwind Theme with Light/Dark Colors -->
+    <script>
+        tailwind.config = {
+            // Add dark mode support based on 'class'
+            darkMode: 'class', 
+            theme: {
+                extend: {
+                    colors: {
+                        'theme-lavender': '#897bc1',
+                        'theme-tangerine': '#fda649', // Updated from Amber
+                        'theme-hotpink': '#fe5bd6',
+                        
+                        // Dark Theme (your original colors)
+                        'dark-bg': '#2a2640',
+                        'dark-bg-med': '#3f3a5e',
+                        'dark-border': '#5a547c',
+                        'dark-text-light': '#e9e7f5',
+                        'dark-text-med': '#c0b8e6',
+
+                        // New Light Theme (with Cream background)
+                        'light-bg': '#faf7ed', // Cream background
+                        'light-bg-med': '#ffffff', // White for cards/nav for contrast
+                        'light-border': '#e7e3d8', // Border to match cream theme
+                        'light-text-dark': '#111827', // Darker text for better contrast
+                        'light-text-med': '#6b7280', // Medium text
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Theme initialization script (prevents flicker) -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #faf7ed; 
+            /* Light track for light mode (Cream) */
+        }
+        
+        html.dark ::-webkit-scrollbar-track {
+            background: #2a2640; /* dark-bg */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1; 
+            border-radius: 4px;
+        }
+        
+        html.dark ::-webkit-scrollbar-thumb {
+            background: #3f3a5e; /* dark-bg-med */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1; 
+        }
+
+        html.dark ::-webkit-scrollbar-thumb:hover {
+            background: #5a547c; /* dark-border */
+        }
+
+        /* Gradient text (Tangerine to Hot Pink) */
+        .gradient-text {
+            background: linear-gradient(to right, #fda649, #fe5bd6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Gradient underline (Tangerine to Hot Pink) */
+        .gradient-underline {
+            background: linear-gradient(to right, #fda649, #fe5bd6);
+            height: 4px;
+            border: none;
+        }
+
+        /* Sticky nav padding */
+        html {
+            scroll-padding-top: 64px; /* Adjust based on sticky nav height (h-16 = 4rem = 64px) */
+        }
+
+        /* Hide scroll-to-top button by default */
+        #scrollTopBtn {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Show when 'show' class is added */
+        #scrollTopBtn.show {
+            display: flex;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<!-- Updated body classes for light/dark mode -->
+<body class="bg-light-bg text-light-text-dark dark:bg-dark-bg dark:text-dark-text-light antialiased transition-colors duration-300">
+
+    <!-- Main Container -->
+    <!-- Mobile-responsive padding -->
+    <div class="max-w-6xl mx-auto p-4 sm:p-12">
+
+        <!-- Header / Hero Section -->
+        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12 sm:mb-16 min-h-[20vh] sm:min-h-0">
+            <div>
+                <!-- Mobile-responsive text sizes -->
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-light-text-dark dark:text-white">Burcu Körükcü</h1>
+                <p class="text-lg sm:text-xl md:text-2xl text-theme-hotpink mt-2 font-medium">Senior Data Engineer</p>
+                <p class="text-light-text-med dark:text-dark-text-med mt-3 flex items-center gap-2">
+            </div>
+            <!-- Social Links (Desktop-only) -->
+            <!-- These links are now hidden on mobile (md:flex) and shown in the nav bar -->
+            <div class="hidden md:flex gap-5 mt-6 sm:mt-0">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=burcukoculu6@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transform hover:scale-110 transition-all duration-200">
+                    <i data-lucide="mail" class="w-7 h-7"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/burcu-koculu/" target="_blank" rel="noopener noreferrer" title="LinkedIn"
+                    class="text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transform hover:scale-110 transition-all duration-200">
+                    <i data-lucide="linkedin" class="w-7 h-7"></i>
+                </a>
+                <a href="https://medium.com/@burcukoculu" target="_blank" rel="noopener noreferrer" title="Medium"
+                    class="text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transform hover:scale-110 transition-all duration-200">
+                    <i data-lucide="file-text" class="w-7 h-7"></i>
+                </a>
+                <!-- CORRECTED GITHUB LINK -->
+                <a href="https://github.com/burcukorukcu" target="_blank" rel="noopener noreferrer" title="GitHub"
+                    class="text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transform hover:scale-110 transition-all duration-200">
+                    <i data-lucide="github" class="w-7 h-7"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- Sticky Nav -->
+        <nav class="sticky top-0 z-50 bg-light-bg/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-light-border dark:border-dark-border/50 mb-12 sm:mb-16 transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex justify-between h-16 items-center">
+                    <!-- Nav Links (centered) - HIDE ON MOBILE -->
+                    <div class="hidden md:flex flex-1 justify-center">
+                        <!-- Mobile-responsive spacing -->
+                        <div class="flex space-x-4 sm:space-x-10 text-xs sm:text-base">
+                            <a href="#about" class="font-medium text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transition-colors duration-200">About</a>
+                            <a href="#skills" class="font-medium text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transition-colors duration-200">Skills</a>
+                            <a href="#experience" class="font-medium text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transition-colors duration-200">Experience</a>
+                            <a href="#blog" class="font-medium text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transition-colors duration-200">Writing</a>
+                            <a href="#education" class="font-medium text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transition-colors duration-200">Education</a>
+                        </div>
+                    </div>
+
+                    <!-- Spacer for mobile to push buttons to the right -->
+                    <div class="flex-1 md:hidden">
+                        <!-- This space is intentionally left blank -->
+                    </div>
+
+                    <!-- Right-side controls: Social (Mobile) + Theme + Mobile Menu -->
+                    <div class="flex-shrink-0 flex items-center space-x-2">
+
+                        <!-- Mobile Social Links (NEW) -->
+                        <!-- These are shown only on mobile (md:hidden) -->
+                        <div class="flex items-center gap-3 md:hidden">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=burcukoculu6@gmail.com" target="_blank" rel="noopener noreferrer" title="Email" class="text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transform hover:scale-110 transition-all duration-200">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/burcu-koculu/" target="_blank" rel="noopener noreferrer" title="LinkedIn"
+                                class="text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transform hover:scale-110 transition-all duration-200">
+                                <i data-lucide="linkedin" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://medium.com/@burcukoculu" target="_blank" rel="noopener noreferrer" title="Medium"
+                                class="text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transform hover:scale-110 transition-all duration-200">
+                                <i data-lucide="file-text" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://github.com/burcukorukcu" target="_blank" rel="noopener noreferrer" title="GitHub"
+                                class="text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine transform hover:scale-110 transition-all duration-200">
+                                <i data-lucide="github" class="w-6 h-6"></i>
+                            </a>
+                        </div>
+
+                        <!-- Theme Toggle Button -->
+                        <button id="theme-toggle" type="button" class="p-2 rounded-md text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine dark:hover:text-theme-tangerine transition-colors duration-200">
+                            <span class="sr-only">Toggle theme</span>
+                            <!-- Moon icon, shown in light mode -->
+                            <i data-lucide="moon" class="w-6 h-6 dark:hidden"></i>
+                            <!-- Sun icon, shown in dark mode -->
+                            <i data-lucide="sun" class="w-6 h-6 hidden dark:inline"></i>
+                        </button>
+
+                        <!-- Mobile Menu Button (Hamburger Icon) - SHOW ON MOBILE -->
+                        <!-- UPDATED: Added gradient background and white icon for prominence -->
+                        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-md text-white bg-gradient-to-r from-theme-tangerine to-theme-hotpink hover:opacity-90 transition-all duration-200 transform hover:scale-105 shadow-lg">
+                            <span class="sr-only">Open main menu</span>
+                            <i id="menu-icon-open" data-lucide="menu" class="w-6 h-6"></i>
+                            <i id="menu-icon-close" data-lucide="x" class="w-6 h-6 hidden"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu (dropdown) -->
+            <div id="mobile-menu" class="hidden md:hidden bg-light-bg-med dark:bg-dark-bg-med border-t border-light-border dark:border-dark-border/50">
+                <div class="px-4 pt-2 pb-4 space-y-2">
+                    <a href="#about" class="mobile-menu-link block px-3 py-2 rounded-md font-medium text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine hover:bg-light-border dark:hover:bg-dark-border">About</a>
+                    <a href="#skills" class="mobile-menu-link block px-3 py-2 rounded-md font-medium text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine hover:bg-light-border dark:hover:bg-dark-border">Skills</a>
+                    <a href="#experience" class="mobile-menu-link block px-3 py-2 rounded-md font-medium text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine hover:bg-light-border dark:hover:bg-dark-border">Experience</a>
+                    <a href="#blog" class="mobile-menu-link block px-3 py-2 rounded-md font-medium text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine hover:bg-light-border dark:hover:bg-dark-border">Writing</a>
+                    <a href="#education" class="mobile-menu-link block px-3 py-2 rounded-md font-medium text-light-text-med dark:text-dark-text-med hover:text-theme-tangerine hover:bg-light-border dark:hover:bg-dark-border">Education</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <!-- Mobile-responsive section gaps -->
+        <main class="flex flex-col gap-16 sm:gap-24">
+
+            <!-- About Me Section -->
+            <section id="about">
+                <h2 class="text-2xl sm:text-3xl font-bold text-light-text-dark dark:text-white mb-8 inline-block">About Me</h2>
+                <hr class="gradient-underline w-24 mb-8">
+                <!-- Switched order on mobile: Image first, then text -->
+                <div class="flex flex-col-reverse md:flex-row items-start gap-10 md:gap-12">
+                    <div class="md:w-2/3 text-light-text-med dark:text-dark-text-med space-y-4 leading-relaxed text-base sm:text-lg">
+                        <p>
+                            Hi! I'm a Senior Data Engineer based in Berlin.
+                        </p>
+                        <p>
+                            I specialize in building and managing scalable data infrastructure, with a strong background in ETL workflows, cloud platforms (AWS, Azure, GCP), and big data technologies like Spark and Kafka.
+                        </p>
+                        <p>
+                            I thrive on transforming complex, raw data into structured, actionable insights and enjoy designing robust systems that power analytics and data science.
+                        </p>
+                        <div class="pt-2">
+                            <p class="mb-4">When I'm not designing data systems, here's what I enjoy:</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-light-text-med dark:text-dark-text-med">
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="flower-2" class="w-5 h-5 text-theme-tangerine flex-shrink-0"></i>
+                                    <span>Doing Yoga</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="footprints" class="w-5 h-5 text-theme-tangerine flex-shrink-0"></i>
+                                    <span>Enjoying long walks</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="plane-takeoff" class="w-5 h-5 text-theme-tangerine flex-shrink-0"></i>
+                                    <span>Exploring new countries</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="pen-tool" class="w-5 h-5 text-theme-tangerine flex-shrink-0"></i>
+                                    <span>Writing (see my blog!)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/3 w-full flex-shrink-0">
+                        <img src="BurcuKorukcu.jpeg" 
+                             alt="A profile picture of Burcu Körükcü"
+                             class="rounded-lg shadow-xl w-full h-auto object-cover aspect-square border-4 border-light-border dark:border-dark-border transition-colors duration-300">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills / Tools Section -->
+            <section id="skills">
+                <h2 class="text-2xl sm:text-3xl font-bold text-light-text-dark dark:text-white mb-8 inline-block">Toolkit & Skills</h2>
+                <hr class="gradient-underline w-24 mb-8">
+                <div class="space-y-8">
+                    <!-- Category: Programming & Data -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-light-text-dark dark:text-white mb-4">Programming & Data</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Python</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">PySpark</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">SQL</span>
+                        </div>
+                    </div>
+                    <!-- Category: Cloud Platforms -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-light-text-dark dark:text-white mb-4">Cloud Platforms</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">AWS (S3, EC2, IAM, Athena, Glue)</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">GCP (BigQuery, Cloud Storage, Pub/Sub)</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Azure (Synapse, Data Lake, DevOps)</span>
+                        </div>
+                    </div>
+                    <!-- Category: Data Engineering & Orchestration -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-light-text-dark dark:text-white mb-4">Data Engineering & Orchestration</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Dagster</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Airbyte</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Kafka</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Airflow</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Hadoop</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Hive</span>
+                        </div>
+                    </div>
+                    <!-- Category: Data Warehousing & BI -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-light-text-dark dark:text-white mb-4">Data Warehousing & BI</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Data Modeling</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Architecture & Design</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">PowerBI</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Superset</span>
+                        </div>
+                    </div>
+                    <!-- Category: DevOps & Infrastructure -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-light-text-dark dark:text-white mb-4">DevOps & Infrastructure</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Linux</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Git</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Docker</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Kubernetes</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">Bitbucket</span>
+                        </div>
+                    </div>
+                    <!-- Category: Databases -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-light-text-dark dark:text-white mb-4">Databases</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">MongoDB</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">PostgreSQL</span>
+                            <span class="bg-light-bg-med text-theme-hotpink dark:bg-dark-bg-med dark:text-theme-hotpink rounded-full px-4 py-1.5 text-sm font-medium transform transition-all duration-200 hover:bg-light-border dark:hover:bg-dark-border hover:scale-105 shadow-sm border border-light-border dark:border-transparent">MSSQL</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Work Experience Section -->
+            <section id="experience">
+                <h2 class="text-2xl sm:text-3xl font-bold text-light-text-dark dark:text-white mb-8 inline-block">Work Experience</h2>
+                <hr class="gradient-underline w-24 mb-12">
+                <!-- Timeline Container -->
+                <div class="relative space-y-12">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-3.5 top-2 h-full border-l-2 border-light-border dark:border-dark-border/70 transition-colors duration-300"></div>
+
+                    <!-- Experience 1: Markt-Pilot -->
+                    <div class="relative group">
+                        <div
+                            class="absolute -left-0.5 top-1.5 w-8 h-8 bg-light-bg dark:bg-dark-bg rounded-full border-4 border-light-border dark:border-dark-border flex items-center justify-center transition-all duration-300 group-hover:border-theme-tangerine">
+                            <i data-lucide="briefcase" class="w-4 h-4 text-theme-tangerine"></i>
+                        </div>
+                        <div class="pl-12">
+                            <h3 class="text-xl font-semibold text-light-text-dark dark:text-white transition-colors duration-300 group-hover:text-theme-tangerine">Data Engineer</h3>
+                            <p class="text-light-text-med dark:text-dark-text-med my-1">Markt-Pilot | Mar 2025 - Present</p>
+                            <ul class="list-disc list-outside ml-5 text-light-text-med dark:text-dark-text-med space-y-2 mt-3 text-base">
+                                <li>Developing and managing ETL workflows using Dagster, Airbyte, and Apache Spark for
+                                    scalable and resilient data processing.</li>
+                                <li>Transforming nested NoSQL structures (MongoDB) into structured, analytics-ready
+                                    formats.</li>
+                                <li>Designing and maintaining Lakehouse storage layers (Bronze, Silver, Gold) with
+                                    modular IO managers and SQL table traits.</li>
+                                <li>Building cloud-native data infrastructure leveraging AWS (S3, EC2, IAM).</li>
+                                <li>Orchestrating and deploying workloads on Kubernetes.</li>
+                                <li>Developing automated data quality checks in Dagster and improved reliability across data pipelines. Standardized metadata and table schemas to enhance traceability, governance, and overall pipeline transparency..</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 2: Bentego -->
+                    <div class="relative group">
+                        <div
+                            class="absolute -left-0.5 top-1.5 w-8 h-8 bg-light-bg dark:bg-dark-bg rounded-full border-4 border-light-border dark:border-dark-border flex items-center justify-center transition-all duration-300 group-hover:border-theme-tangerine">
+                            <i data-lucide="briefcase" class="w-4 h-4 text-theme-tangerine"></i>
+                        </div>
+                        <div class="pl-12">
+                            <h3 class="text-xl font-semibold text-light-text-dark dark:text-white transition-colors duration-300 group-hover:text-theme-tangerine">Big Data Engineer</h3>
+                            <p class="text-light-text-med dark:text-dark-text-med my-1">Bentego (Consultant for Vodafone) | Oct 2023 - Feb 2025</p>
+                            <ul class="list-disc list-outside ml-5 text-light-text-med dark:text-dark-text-med space-y-2 mt-3 text-base">
+                                <li>Managing pipelines and CI/CD (Apache Airflow, Bitbucket, Jenkins).</li>
+                                <li>Orchestrated the migration of Kafka streaming flow between servers.</li>
+                                <li>Processing data from different sources using Python, MongoDB, SQL.</li>
+                                <li>Monitoring and troubleshooting with real-time data flows (Apache Kafka, Spark,
+                                    Phoenix).</li>
+                                <li>Created dashboards for data flows and cluster monitoring with Python, Airflow and
+                                    Superset.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 3: Borusan Otomotiv (Data Engineer) -->
+                    <div class="relative group">
+                        <div
+                            class="absolute -left-0.5 top-1.5 w-8 h-8 bg-light-bg dark:bg-dark-bg rounded-full border-4 border-light-border dark:border-dark-border flex items-center justify-center transition-all duration-300 group-hover:border-theme-tangerine">
+                            <i data-lucide="briefcase" class="w-4 h-4 text-theme-tangerine"></i>
+                        </div>
+                        <div class="pl-12">
+                            <h3 class="text-xl font-semibold text-light-text-dark dark:text-white transition-colors duration-300 group-hover:text-theme-tangerine">Data Engineer</h3>
+                            <p class="text-light-text-med dark:text-dark-text-med my-1">Borusan Otomotiv | Jan 2023 - Oct 2023</p>
+                            <ul class="list-disc list-outside ml-5 text-light-text-med dark:text-dark-text-med space-y-2 mt-3 text-base">
+                                <li>Created ETL/ELT pipelines on MS Azure (Azure Data Factory, Synapse, Blob Storage).
+                                </li>
+                                <li>Data Modeling, Design and Warehousing, Ad Hoc Reporting.</li>
+                                <li>Implemented a customer segmentation project (MSSQL, Azure Synapse, PowerBI).</li>
+                                <li>Created interactive dashboards for sales, operation, finance and marketing teams on
+                                    PowerBI.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience 4: Borusan Otomotiv (Data Scientist) -->
+                    <div class="relative group">
+                        <div
+                            class="absolute -left-0.5 top-1.5 w-8 h-8 bg-light-bg dark:bg-dark-bg rounded-full border-4 border-light-border dark:border-dark-border flex items-center justify-center transition-all duration-300 group-hover:border-theme-tangerine">
+                            <i data-lucide="briefcase" class="w-4 h-4 text-theme-tangerine"></i>
+                        </div>
+                        <div class="pl-12">
+                            <h3 class="text-xl font-semibold text-light-text-dark dark:text-white transition-colors duration-300 group-hover:text-theme-tangerine">Data Scientist</h3>
+                            <p class="text-light-text-med dark:text-dark-text-med my-1">Borusan Otomotiv | Aug 2021 - Dec 2022</p>
+                            <ul class="list-disc list-outside ml-5 text-light-text-med dark:text-dark-text-med space-y-2 mt-3 text-base">
+                                <li>Developed car matching system using NLP libraries.</li>
+                                <li>Developed a vehicle recommendation system.</li>
+                                <li>Weekly dynamic dashboards (Market Analysis) with Power BI.</li>
+                                <li>Web scraping (BeautifulSoup and Selenium).</li>
+                                <li>Wrote Python scripts for automated reports and created BI Dashboards.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blog Section -->
+            <section id="blog">
+                <h2 class="text-2xl sm:text-3xl font-bold text-light-text-dark dark:text-white mb-8 inline-block">My Writing</h2>
+                <hr class="gradient-underline w-24 mb-8">
+                <!-- This grid will be populated by JavaScript -->
+                <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Loading State / Fallback -->
+                    <div
+                        class="lg:col-span-3 flex flex-col justify-center items-center bg-light-bg-med/50 dark:bg-dark-bg-med/50 p-6 rounded-lg border-2 border-dashed border-light-border dark:border-dark-border transition-colors duration-300">
+                        <i data-lucide="loader-2" class="w-12 h-12 text-light-border dark:text-dark-border mb-3 animate-spin"></i>
+                        <h3 class="text-lg font-semibold text-light-text-med dark:text-dark-text-med">
+                            Fetching latest articles...
+                        </h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education & Certifications Section -->
+            <section id="education">
+                <h2 class="text-2xl sm:text-3xl font-bold text-light-text-dark dark:text-white mb-8 inline-block">Education & Certifications</h2>
+                <hr class="gradient-underline w-24 mb-8">
+                <div class="space-y-8">
+                    <!-- Education -->
+                    <div class="bg-light-bg-med dark:bg-dark-bg-med/50 p-6 rounded-lg border border-light-border dark:border-dark-border/50 transition-colors duration-300 shadow-sm">
+                        <h3 class="text-xl font-semibold text-light-text-dark dark:text-white">BSc, Computer Engineering</h3>
+                        <p class="text-light-text-med dark:text-dark-text-med mt-1">Izmir University Of Economics | Izmir, Turkey</p>
+
+                        <p class="text-light-text-med dark:text-dark-text-med text-sm">(Full Scholarship, 100% English)</p>
+                    </div>
+                    <!-- Certifications -->
+                    <div class="bg-light-bg-med dark:bg-dark-bg-med/50 p-6 rounded-lg border border-light-border dark:border-dark-border/50 transition-colors duration-300 shadow-sm">
+                        <a href="https://www.credly.com/badges/29ee1568-7ec3-4ce1-8a9c-ab007f423d84/linked_in_profile" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 group">
+                            <h3 class="text-xl font-semibold text-light-text-dark dark:text-white group-hover:text-theme-tangerine transition-colors">Google Professional Data Engineer</h3>
+                            <i data-lucide="external-link" class="w-5 h-5 text-light-text-med dark:text-dark-text-med group-hover:text-theme-tangerine transition-colors"></i>
+                        </a>
+                        <h3 class="text-xl font-semibold text-light-text-dark dark:text-white mt-4">AWS Certified Data Engineer - Associate</h3>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center text-light-text-med dark:text-dark-text-med opacity-70 mt-16 sm:mt-24 pt-10 border-t border-light-border dark:border-dark-border transition-colors duration-300">
+            <p>&copy; 2025 Burcu Körükcü. Designed with a gradient of ☕ and 👩‍💻.</p>
+        </footer>
+
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="scrollTopBtn" title="Go to top" 
+            class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 items-center justify-center w-12 h-12 rounded-full bg-theme-lavender/80 dark:bg-theme-lavender/90 text-white backdrop-blur-sm shadow-lg transform transition-all hover:scale-110 hover:bg-theme-lavender dark:hover:bg-theme-lavender">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
+    <!-- Script to initialize Lucide icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- Theme Toggle & Scroll-to-Top Script -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        const htmlElement = document.documentElement;
+
+        // Mobile Menu Elements
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        // Theme Toggle
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+            // Re-initialize icons if they were hidden/shown
+            lucide.createIcons();
+        });
+
+        // Scroll to Top Button
+        window.onscroll = () => {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        };
+        
+        scrollTopBtn.addEventListener('click', () => {
+             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+            // Re-initialize icons
+            lucide.createIcons();
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+                // Re-initialize icons
+                lucide.createIcons();
+            });
+        });
+    </script>
+
+    <!-- Script to Fetch Medium Articles (Updated for Light/Dark Mode) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchMediumArticles();
+        });
+
+        function fetchMediumArticles() {
+            const mediumRssUrl = 'https://medium.com/feed/@burcukoculu';
+            const rss2jsonApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(mediumRssUrl)}`;
+            const blogGrid = document.getElementById('blog-grid');
+
+            fetch(rss2jsonApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'ok' && data.items && data.items.length > 0) {
+                        blogGrid.innerHTML = '';
+                        // Filter out comments/responses (items without categories are often replies)
+                        const latestArticles = data.items.filter(item => item.categories && item.categories.length > 0).slice(0, 3);
+                        
+                        if (latestArticles.length === 0) {
+                            // Handle case where there are items, but all are replies
+                            showBlogError(true); // Pass a flag for "no posts"
+                            return;
+                        }
+
+                        latestArticles.forEach(item => {
+                            const articleCard = createArticleCard(item);
+                            blogGrid.innerHTML += articleCard;
+                        });
+                        
+                        // Adjust grid columns based on number of articles
+                        if (latestArticles.length === 2) {
+                            blogGrid.classList.remove('lg:grid-cols-3');
+                            blogGrid.classList.add('md:grid-cols-2');
+                        } else if (latestArticles.length === 1) {
+                            blogGrid.classList.remove('lg:grid-cols-3', 'md:grid-cols-2');
+                            blogGrid.classList.add('md:grid-cols-1', 'max-w-2xl', 'mx-auto');
+                        } else {
+                            // Default is 3 columns (lg:grid-cols-3)
+                        }
+
+                        lucide.createIcons();
+                    } else {
+                        // Handle API error
+                        showBlogError(false);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching Medium articles:', error);
+                    showBlogError(false);
+                });
+        }
+
+        function createArticleCard(item) {
+            // Clean up description and truncate
+            const description = stripHtmlAndTruncate(item.description, 120);
+            // Format publication date
+            const pubDate = new Date(item.pubDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            // Use item.thumbnail as the image source
+            const thumbnail = item.thumbnail;
+
+            // This HTML now includes dark: prefixes and all theme/responsive classes
+            return `
+                <a href="${item.link}" target="_blank" rel="noopener noreferrer"
+                   class="block bg-light-bg-med dark:bg-dark-bg-med p-6 rounded-lg shadow-lg group transition-all duration-300 hover:bg-light-border dark:hover:bg-dark-border hover:-translate-y-2 hover:shadow-2xl border border-light-border dark:border-dark-bg-med">
+                    
+                    ${thumbnail ? `<img src="${thumbnail}" alt="Cover for ${item.title}" class="rounded-md mb-4 w-full h-48 object-cover">` : ''}
+
+                    <h3 class="text-lg font-semibold text-light-text-dark dark:text-white mb-2 transition-colors duration-300 group-hover:text-theme-tangerine" style="min-height: 3.5rem;">
+                        ${item.title}
+                    </h3>
+                    <p class="text-light-text-med dark:text-dark-text-med text-sm mb-3">${pubDate}</p>
+                    <p class="text-light-text-med dark:text-dark-text-med mb-4 text-sm leading-relaxed" style="min-height: 4.5rem;">
+                        ${description}
+                    </p>
+                    <span class="font-medium text-theme-tangerine flex items-center gap-1.5 text-sm">
+                        Read on Medium
+                        <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </span>
+                </a>
+            `;
+        }
+
+        function showBlogError(noPosts = false) {
+            const blogGrid = document.getElementById('blog-grid');
+            const title = noPosts ? "No articles found" : "Could not load Medium articles";
+            const message = noPosts ? 
+                "It looks like I haven't published any articles yet. Please check back later!" :
+                `Please visit my <a href="https://medium.com/@burcukoculu" target="_blank" rel="noopener noreferrer" class="font-medium text-theme-tangerine hover:underline">Medium profile</a> directly to see my latest posts.`;
+
+            // This HTML now includes dark: prefixes
+            blogGrid.innerHTML = `
+                <div class="lg:col-span-3 flex flex-col justify-center items-center bg-light-bg-med/50 dark:bg-dark-bg-med/50 p-6 rounded-lg border-2 border-dashed border-light-border dark:border-dark-border transition-colors duration-300">
+                    <i data-lucide="alert-triangle" class="w-12 h-12 text-light-border dark:text-dark-border mb-3"></i>
+                    <h3 class="text-lg font-semibold text-light-text-med dark:text-dark-text-med mb-2">
+                        ${title}
+                    </h3>
+                    <p class="text-light-text-med dark:text-dark-text-med text-center text-sm">
+                        ${message}
+                    </p>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function stripHtmlAndTruncate(html, length) {
+            // Create a temporary element to parse HTML
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+            
+            // Try to find a meaningful paragraph, fallback to all text
+            let text = "";
+            const firstParagraph = tempDiv.querySelector('p');
+            if (firstParagraph) {
+                text = firstParagraph.textContent || firstParagraph.innerText;
+            } else {
+                text = tempDiv.textContent || tempDiv.innerText;
+            }
+
+            // Clean up whitespace
+            text = text.replace(/\s+/g, ' ').trim();
+
+            // Truncate
+            if (text.length > length) {
+                return text.substring(0, length) + '...';
+            }
+            return text;
+        }
+
+    </script>
+</body>
+
+</html>
