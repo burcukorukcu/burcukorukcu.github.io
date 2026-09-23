@@ -403,20 +403,16 @@
                         </div>
                         <div class="pl-12">
                             <h3 class="text-xl font-semibold text-light-text-dark dark:text-white transition-colors duration-300 group-hover:text-theme-tangerine">Data Engineer</h3>
-                            <p class="text-light-text-med dark:text-dark-text-med my-1">Markt-Pilot | Mar 2025 - Present</p>
+                            <p class="text-light-text-med dark:text-dark-text-med my-1">MARKT-PILOT | Mar 2025 - Present | Remote, Berlin, Germany</p>
                             <ul class="list-disc list-outside ml-5 text-light-text-med dark:text-dark-text-med space-y-2 mt-3 text-base">
-                                <li>Created/Designed ETL pipelines on Databricks from the ground up using Lakeflow Spark Declarative Pipelines (formerly Delta Live Tables), combining materialized views for full refreshes with CDC-based incremental ingestion to build self-healing data flows as the foundational data platform.</li>
-                                <li>Implemented Infrastructure-as-Code via Databricks Asset Bundles and established Unity Catalog–based governance, enabling version-controlled deployments and secure cross-team data sharing across engineering, analytics, and BI groups.</li>
-                                <li>Developing and managing ETL workflows using Dagster, Airbyte, and Apache Spark for
-                                    scalable and resilient data processing.</li>
-                                <li>Transforming nested NoSQL structures (MongoDB) into structured, analytics-ready
-                                    formats.</li>
-                                <li>Designing and maintaining Lakehouse storage layers (Bronze, Silver, Gold) with
-                                    modular IO managers and SQL table traits.</li>
-                                <li>Building cloud-native data infrastructure leveraging AWS (S3, EC2, IAM).</li>
-                                <li>Orchestrating and deploying workloads on Kubernetes.</li>
-                                <li>Developing automated data quality checks in Dagster and improved reliability across data pipelines. Standardized metadata and table schemas to enhance traceability, governance, and overall pipeline transparency..</li>
+                                <li>Designed and built an end-to-end parts matching and enrichment pipeline on Databricks, with LLM-based manufacturer cleaning, deduplication, and verification using LLMs plus web research (SerpAPI), and a manual-review feedback loop app; 31% of manufacturer names were folded into their canonical form, 19.5% of parts were deduplicated, and 72% of industrial spare parts are now matched automatically without manual review.</li>
+                                <li>Took the Databricks platform from POC to production: built the silver layer with Lakeflow Spark Declarative Pipelines, combining CDC-based incremental ingestion with materialized views for full refreshes, and turned nested MongoDB documents into structured, analytics-ready tables.</li>
+                                <li>Redesigned the gold layer as a star schema with new fact and dimension tables, data contracts, and automated quality checks for duplicates, null rates, and business rules such as valid price and delivery-time ranges.</li>
+                                <li>Developed ETL and orchestration workflows with Dagster on Kubernetes, Airbyte, and Apache Spark on AWS (S3, EC2, IAM, ECR), and set up an alerting system in Dagster with notifications to Microsoft Teams.</li>
+                                <li>Implemented Infrastructure-as-Code with Databricks Asset Bundles and Terraform, CI/CD on Azure DevOps, and Unity Catalog access control and lineage for secure data sharing across engineering, analytics, and BI teams.</li>
+                                <li>Collaborated with data scientists, product managers, and business stakeholders to turn requirements into reusable data products for internal analytics and executive dashboards.</li>
                             </ul>
+                            <p class="text-sm text-light-text-med dark:text-dark-text-med mt-3"><span class="font-semibold text-light-text-dark dark:text-white">Technologies:</span> Databricks, Lakeflow Spark Declarative Pipelines, Delta Lake, Unity Catalog, Databricks Asset Bundles, Dagster, Airbyte, Apache Spark, MongoDB, Kubernetes, Terraform, AWS (S3, EC2, IAM, ECR), Azure DevOps, Python, SQL</p>
                         </div>
                     </div>
 
@@ -428,16 +424,15 @@
                         </div>
                         <div class="pl-12">
                             <h3 class="text-xl font-semibold text-light-text-dark dark:text-white transition-colors duration-300 group-hover:text-theme-tangerine">Big Data Engineer</h3>
-                            <p class="text-light-text-med dark:text-dark-text-med my-1">Bentego (Consultant for Vodafone) | Oct 2023 - Feb 2025</p>
+                            <p class="text-light-text-med dark:text-dark-text-med my-1">Bentego (Consultant for Vodafone) | Oct 2023 - Feb 2025 | Istanbul, Turkey</p>
                             <ul class="list-disc list-outside ml-5 text-light-text-med dark:text-dark-text-med space-y-2 mt-3 text-base">
-                                <li>Managing pipelines and CI/CD (Apache Airflow, Bitbucket, Jenkins).</li>
-                                <li>Orchestrated the migration of Kafka streaming flow between servers.</li>
-                                <li>Processing data from different sources using Python, MongoDB, SQL.</li>
-                                <li>Monitoring and troubleshooting with real-time data flows (Apache Kafka, Spark,
-                                    Phoenix).</li>
-                                <li>Created dashboards for data flows and cluster monitoring with Python, Airflow and
-                                    Superset.</li>
+                                <li>Developed Spark streaming jobs in PySpark that consume CDC streams from Kafka topics and transform events for real-time analytics, on a Kafka backbone ingesting roughly 5–10 TB of raw events per day.</li>
+                                <li>Built production batch ETL and streaming pipelines as Apache Airflow DAGs written from scratch, shipped through CI/CD with Bitbucket and Jenkins for version-controlled deployments, with Airflow alerting to the operations team.</li>
+                                <li>Led the migration of Kafka streaming flows between servers, tuning performance so continuous data processing ran without interruption.</li>
+                                <li>Implemented data transformation logic in PySpark and SQL to integrate MongoDB and other source systems for real-time analytics use cases.</li>
+                                <li>Built observability tooling with Python, Apache Airflow, and Apache Superset dashboards for data flow and cluster health, and debugged production issues across Kafka, Spark, and Apache Phoenix to make the pipelines more reliable.</li>
                             </ul>
+                            <p class="text-sm text-light-text-med dark:text-dark-text-med mt-3"><span class="font-semibold text-light-text-dark dark:text-white">Technologies:</span> Apache Kafka, Apache Spark, Apache Phoenix, Apache Airflow, Apache Superset, Python, SQL, MongoDB, Bitbucket, Jenkins</p>
                         </div>
                     </div>
 
@@ -449,15 +444,13 @@
                         </div>
                         <div class="pl-12">
                             <h3 class="text-xl font-semibold text-light-text-dark dark:text-white transition-colors duration-300 group-hover:text-theme-tangerine">Data Engineer</h3>
-                            <p class="text-light-text-med dark:text-dark-text-med my-1">Borusan Otomotiv | Jan 2023 - Oct 2023</p>
+                            <p class="text-light-text-med dark:text-dark-text-med my-1">Borusan Otomotiv | Jan 2023 - Oct 2023 | Istanbul, Turkey</p>
                             <ul class="list-disc list-outside ml-5 text-light-text-med dark:text-dark-text-med space-y-2 mt-3 text-base">
-                                <li>Created ETL/ELT pipelines on MS Azure (Azure Data Factory, Synapse, Blob Storage).
-                                </li>
-                                <li>Data Modeling, Design and Warehousing, Ad Hoc Reporting.</li>
-                                <li>Implemented a customer segmentation project (MSSQL, Azure Synapse, PowerBI).</li>
-                                <li>Created interactive dashboards for sales, operation, finance and marketing teams on
-                                    PowerBI.</li>
+                                <li>Built ETL and ELT pipelines on Microsoft Azure using Azure Data Factory, Synapse, and Blob Storage to feed enterprise reporting.</li>
+                                <li>Performed data modeling, warehouse design, and ad hoc reporting; delivered an end-to-end customer segmentation project covering data modeling, MSSQL stored procedures, Synapse pipelines, and BI dashboards.</li>
+                                <li>Created interactive Power BI dashboards for sales, operations, finance, and marketing teams to support data-driven decision making.</li>
                             </ul>
+                            <p class="text-sm text-light-text-med dark:text-dark-text-med mt-3"><span class="font-semibold text-light-text-dark dark:text-white">Technologies:</span> Azure Data Factory, Azure Synapse, Azure Blob Storage, MSSQL, Power BI, Python, SQL</p>
                         </div>
                     </div>
 
@@ -469,14 +462,13 @@
                         </div>
                         <div class="pl-12">
                             <h3 class="text-xl font-semibold text-light-text-dark dark:text-white transition-colors duration-300 group-hover:text-theme-tangerine">Data Scientist</h3>
-                            <p class="text-light-text-med dark:text-dark-text-med my-1">Borusan Otomotiv | Aug 2021 - Dec 2022</p>
+                            <p class="text-light-text-med dark:text-dark-text-med my-1">Borusan Otomotiv | Aug 2021 - Dec 2022 | Istanbul, Turkey</p>
                             <ul class="list-disc list-outside ml-5 text-light-text-med dark:text-dark-text-med space-y-2 mt-3 text-base">
-                                <li>Developed car matching system using NLP libraries.</li>
-                                <li>Developed a vehicle recommendation system.</li>
-                                <li>Weekly dynamic dashboards (Market Analysis) with Power BI.</li>
-                                <li>Web scraping (BeautifulSoup and Selenium).</li>
-                                <li>Wrote Python scripts for automated reports and created BI Dashboards.</li>
+                                <li>Developed a car matching system and a vehicle recommendation engine using Python NLP libraries to support pricing and inventory teams.</li>
+                                <li>Automated daily, weekly, and monthly Excel reports with Python scripts and built Power BI dashboards for pricing and marketing.</li>
+                                <li>Implemented web scraping pipelines with BeautifulSoup and Selenium to feed market analysis dashboards.</li>
                             </ul>
+                            <p class="text-sm text-light-text-med dark:text-dark-text-med mt-3"><span class="font-semibold text-light-text-dark dark:text-white">Technologies:</span> Python, BeautifulSoup, Selenium, Power BI, NLP libraries, SQL</p>
                         </div>
                     </div>
                 </div>
